@@ -1,0 +1,28 @@
+Options -Multiviews -Indexes
+ServerSignature Off
+DirectoryIndex index.php index.html index.htm
+
+RewriteEngine On
+
+
+# Allow your 404 page internally
+RewriteRule ^404\.html$ - [L]
+
+# 1) Block direct requests with extensions (about.html, about.php)
+RewriteCond %{THE_REQUEST} \s/.*\.(?:html?|php)\s [NC]
+RewriteRule ^ - [R=404,L]
+
+# 2) Serve real files/dirs as-is (after blocking)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 3) Pretty URLs: try .php first, then .html (legacy)
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Custom 404
+ErrorDocument 404 /404.html
