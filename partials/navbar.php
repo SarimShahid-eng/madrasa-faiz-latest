@@ -48,7 +48,6 @@
   <link rel="stylesheet" href="assets/css/nouislider.pips.css" />
   <link rel="stylesheet" href="assets/css/asting.css" />
 
-  <!-- ✅ Font Awesome 4.7.0 -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
